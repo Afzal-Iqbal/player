@@ -1,0 +1,103 @@
+body {
+    background: linear-gradient(135deg, #1a1a1a, #0e0505); /* Gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Hide scrollbars */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.piano {
+    display: flex;
+    position: relative;
+    background: linear-gradient(145deg, #2c3e50, #34495e); /* Gradient for piano base */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Shadow for the piano base */
+}
+
+.key {
+    width: 50px;
+    height: 150px;
+    margin: 0 2px;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 150px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for all keys */
+    user-select: none; /* Prevent text selection */
+}
+
+.white-key {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0); /* Gradient for white keys */
+    color: #333;
+    border: 1px solid #ddd; /* Light border for definition */
+}
+
+.black-key {
+    background: linear-gradient(145deg, #333, #222); /* Gradient for black keys */
+    color: #fff;
+    width: 35px;
+    height: 100px;
+    position: absolute;
+    margin-left: -17.5px; /* Center black keys between white keys */
+    z-index: 2; /* Ensure black keys are above white keys */
+    border: 1px solid #111; /* Dark border for definition */
+}
+
+/* Positioning for black keys */
+.black-key[data-note="C#"] { left: 40px; }
+.black-key[data-note="D#"] { left: 95px; }
+.black-key[data-note="F#"] { left: 205px; }
+.black-key[data-note="G#"] { left: 260px; }
+.black-key[data-note="A#"] { left: 315px; }
+
+.key:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4); /* Increased shadow on hover */
+}
+
+.key:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(145deg, #e0e0e0, #d0d0d0); /* Gradient change for white keys when pressed */
+}
+
+.black-key:active {
+    background: linear-gradient(145deg, #222, #111); /* Gradient change for black keys when pressed */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .key {
+        width: 40px;
+        height: 120px;
+        line-height: 120px;
+        font-size: 16px;
+    }
+
+    .black-key {
+        width: 30px;
+        height: 80px;
+        margin-left: -15px;
+    }
+
+    .black-key[data-note="C#"] { left: 32px; }
+    .black-key[data-note="D#"] { left: 76px; }
+    .black-key[data-note="F#"] { left: 164px; }
+    .black-key[data-note="G#"] { left: 208px; }
+    .black-key[data-note="A#"] { left: 252px; }
+}
